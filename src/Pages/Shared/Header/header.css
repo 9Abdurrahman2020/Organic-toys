@@ -1,0 +1,18 @@
+#nav-container{
+    background-color: rgb(248, 132, 54);
+}
+.nav-logo{
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+}
+.links-container a{
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    padding: 8px 16px;
+}
+.links-container a:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(238, 15, 15);
+}
