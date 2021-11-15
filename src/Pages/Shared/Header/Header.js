@@ -24,6 +24,9 @@ const Header = () => {
                             user && <NavLink to="/dashboard">Dashboard</NavLink>
                         }
                         {
+                            user && <a>{user.displayName}</a>
+                        }
+                        {
                             user ? <button onClick={logOutUser} className="btn btn-danger">Logout</button> : <NavLink to="/login">Login</NavLink>
                         }
                     </Nav>

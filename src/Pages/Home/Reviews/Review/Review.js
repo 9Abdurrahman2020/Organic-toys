@@ -8,7 +8,7 @@ const Review = ({review}) => {
             <Card>
                 <Card.Header>{review.reviewer}</Card.Header>
                 <Card.Body>
-                    <Card.Text> 
+                    <Card.Text style={{height:'100px',overflow:'auto'}}> 
                       {review.comments}
                     </Card.Text>
                     <Rating

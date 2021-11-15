@@ -18,6 +18,7 @@ const UpdateProduct = () => {
 
 
     const onSubmit = data => {
+        const confirm = window.confirm('Are you sure? want to modify?');
         const product = {
             title: data.title || toy.title,
             price: data.price || toy.price,
@@ -25,18 +26,21 @@ const UpdateProduct = () => {
             des: data.des || toy.des,
             rate: data.rate || toy.rate
         }
-        fetch(`https://sleepy-stream-84446.herokuapp.com/products/${id}`, {
-            method: "PUT",
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(product)
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.modifiedCount > 0) {
-                    alert('Successfully updated the Product info !')
-                    history.push('/dashboard/manage')
-                }
+
+        if(confirm){
+            fetch(`https://sleepy-stream-84446.herokuapp.com/products/${id}`, {
+                method: "PUT",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(product)
             })
+                .then(res => res.json())
+                .then(result => {
+                    if (result.modifiedCount > 0) {
+                        alert('Successfully updated the Product info !')
+                        history.push('/dashboard/manage')
+                    }
+                })
+        }
     }
 
     return (
@@ -53,7 +57,7 @@ const UpdateProduct = () => {
                 <textarea required style={{ marginBottom: '10px' }} type="text" {...register("des")} defaultValue={toy?.des} />
                 <b>Product Rating:</b>
                 <input required {...register("rate")} placeholder="Give a Rating(1-5)" defaultValue={toy?.rate} />
-                <input type="submit" value="Update" className="btn btn-primary mt-2" />
+                <input type="submit" value="Modify" className="btn btn-primary mt-2" />
             </form>
         </div>
     );

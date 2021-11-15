@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Carousel, Row } from 'react-bootstrap';
+import { Button, Carousel, Row, Spinner } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
 const TopBanner = () => {
-    const [toys, setToys] = useState([])
+    const [toys, setToys] = useState([]);
+    const [ dataLoading, setDataLoading ] = useState(true)
 
     useEffect(() => {
         fetch('https://sleepy-stream-84446.herokuapp.com/toys')
             .then(res => res.json())
-            .then(data => setToys(data))
+            .then(data => {
+                setToys(data)
+                setDataLoading(false)
+            })
     }, [])
+
 
     return (
         <>
             <Carousel style={{ height: '100vh' }}>
+            {
+                dataLoading && <div className="text-center mt-5"><Spinner animation="border" variant="primary" /></div>
+            }
                 {
                     toys.slice(0, 5).map(toy => <Carousel.Item interval={2000}>
                         <Row style={{ alignItems: 'center' }}>

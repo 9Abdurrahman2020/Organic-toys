@@ -33,7 +33,7 @@ const DashProduct = ({ product }) => {
                         </div>
                     </div>
                     <div className="card-footer d-flex" style={{ justifyContent: 'space-between' }}>
-                        <Link to={`${url}/update/${_id}`}><button className="btn btn-success">Update</button></Link>
+                        <Link to={`${url}/update/${_id}`}><button className="btn btn-success">Modify</button></Link>
                         <button onClick={() => deleteProduct(_id)} className="btn btn-danger">Delete</button>
                     </div>
                 </div>
